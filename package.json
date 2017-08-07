@@ -1,0 +1,39 @@
+{
+  "name": "font-ebay",
+  "description": "A module to load ebay font",
+  "version": "1.0.0",
+  "author": "Raja Ramu <rar@ebay.com>",
+  "homepage": "https://github.corp.ebay.com/nodegems/font-ebay.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.corp.ebay.com/nodegems/font-ebay.git"
+  },
+  "publishConfig": {
+    "registry": "http://npm.corp.ebay.com"
+  },
+  "scripts": {
+    "lint": "eslint *.js **/*.js",
+    "test": "istanbul cover _mocha tests/index.js",
+    "rep": "open coverage/lcov-report/index.html",
+    "all": "npm run lint && npm test && npm run rep"
+  },
+  "dependencies": {
+    "lasso-loader": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "eslint": "^3.9.1",
+    "eslint-config-ebay": "0.0.5",
+    "istanbul": "^0.4.0",
+    "jsdom": "^9.0.0",
+    "less": "^2.7.1",
+    "mocha": "^3.1.2",
+    "mocha-jsdom": "^1.1.0"
+  },
+  "peerDependencies": {
+    "lasso": "^2.0.0",
+    "marko": "^3.0.3",
+    "marko-widgets": "^6.0.0"
+  }
+}

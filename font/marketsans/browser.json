@@ -1,0 +1,16 @@
+{
+    "dependencies": [
+        "skin-ebay/marketsans",
+        "require: marko-widgets",
+        "require: lasso-loader",
+        "require: ./widget"
+    ],
+    "async": {
+        "font-async-observer":[
+            "./fontfaceobserver.js"
+        ],
+        "font-async-loader":[
+            "./fontloader.js"
+        ]
+    }
+}
