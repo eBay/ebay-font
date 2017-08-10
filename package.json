@@ -1,5 +1,5 @@
 {
-  "name": "font-ebay",
+  "name": "ebay-font",
   "description": "A module to load ebay font",
   "version": "1.0.0",
   "author": "Raja Ramu <rar@ebay.com>",
@@ -33,7 +33,6 @@
   },
   "peerDependencies": {
     "lasso": "^2.0.0",
-    "marko": "^3.0.3",
-    "marko-widgets": "^6.0.0"
+    "marko": "^3.0.3"
   }
 }

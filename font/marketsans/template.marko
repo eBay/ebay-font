@@ -1,11 +1,12 @@
 <style>
- .ebay-font-marketsans > body {
+ .font-marketsans > body {
         font-family: "Market Sans","Helvetica Neue", Helvetica,Arial,Roboto,sans-serif
     }
 </style>
-<script w-bind>
-if (localStorage && localStorage.getItem('ebay-font-class')) {
+<script>
+var fontClass = localStorage && localStorage.getItem('ebay-font');
+if (fontClass) {
     var docEl = document.documentElement;
-	docEl.className += ' ebay-font-marketsans';
+	docEl.className += ' '+ fontClass;
 }
 </script>

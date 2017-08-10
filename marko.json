@@ -1,6 +1,6 @@
 {
     "tags": {
-        "font-ebay": {
+        "ebay-font": {
             "renderer": "./font/marketsans"
         }
     }
