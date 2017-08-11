@@ -20,21 +20,26 @@ function updateLocalStorage () {
         localStorage.setItem('ebay-font', 'font-marketsans');
     }	
 }
+function loadFont() {
+        //check for fontfaceset else load polyfill before invoking fontloader
+        var fontFaceSet = document.fonts;
+        if (fontFaceSet && fontFaceSet.load) {
+            fontLoader(true);
+        } else {
+            lassoLoader('font-async-observer', function (err) {
+                fontLoader();
+            });
+        }
+}
 function init() {
     if (localStorage && !localStorage.getItem('ebay-font')) {
-        window.addEventListener('load', function () {
-            //check for fontfaceset else load polyfill before invoking fontloader
-            var fontFaceSet = document.fonts;
-            if (fontFaceSet && fontFaceSet.load) {
-                fontLoader(true);
+        window.addEventListener('load', function() { 
+            if (requestAnimationFrame) {
+                requestAnimationFrame(loadFont); 
             } else {
-                lassoLoader('font-async-observer', function (err) {
-                    fontLoader();
-                });
+                loadFont();
             }
         });
     }
 }
 init();
-
-
