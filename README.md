@@ -31,3 +31,16 @@ font-ebay exposes a tag(`<ebay-font>`) to embed into <head> of the page. this ta
 ...
 ...
 ```
+## Approach
+  1. When user is landing first time on ebay, font would not be there
+  2. Lazy load font asynchronously and Once its loaded, it update a flag into localstorage to remember next time
+  3. When user go to different page or refresh the same page, localstorage flag will be read and start using it 
+  
+## How to test
+ First timer user,
+    1. will see ```font-family: "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif```
+    2. look at chrome dev tool > Application > localstorage 'ebay-font', 'font-marketsans'
+ Repeated user,
+     1. will see ```font-family: "Market Sans", "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif```
+     2. page will be loaded with market sans font
+    
