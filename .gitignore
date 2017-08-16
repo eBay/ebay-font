@@ -6,3 +6,5 @@ npm-debug.log
 .beans
 .vscode
 coverage/
+.cache
+.test
