@@ -38,9 +38,9 @@ font-ebay exposes a tag(`<ebay-font>`) to embed into <head> of the page. this ta
   
 ## How to test
  ### First timer user,
-    1. will see ```font-family: "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif```
-    2. look at chrome dev tool > Application > localstorage 'ebay-font', 'font-marketsans'
+   1. will see `font-family: "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif`
+   2. look at chrome dev tool > Application > localstorage 'ebay-font', 'font-marketsans'
  ### Repeated user,
-   1. will see ```font-family: "Market Sans", "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif```
+   1. will see `font-family: "Market Sans", "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif`
    2. page will be loaded with market sans font
     
