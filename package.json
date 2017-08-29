@@ -3,10 +3,10 @@
   "description": "A module to load ebay font",
   "version": "1.0.2",
   "author": "Raja Ramu <rar@ebay.com>",
-  "homepage": "https://github.corp.ebay.com/nodegems/font-ebay.git",
+  "homepage": "https://github.corp.ebay.com/nodegems/ebay-font.git",
   "repository": {
     "type": "git",
-    "url": "https://github.corp.ebay.com/nodegems/font-ebay.git"
+    "url": "https://github.corp.ebay.com/nodegems/ebay-font.git"
   },
   "publishConfig": {
     "registry": "http://npm.corp.ebay.com"
