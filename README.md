@@ -43,4 +43,11 @@ font-ebay exposes a tag(`<ebay-font>`) to embed into <head> of the page. this ta
  ### Repeated user,
    1. will see `font-family: "Market Sans", "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif`
    2. page will be loaded with market sans font
+
+## Contribute
+  Make sure existing tests are passed by running steps before sending PR
+  
+  1. Run eslint  ``` npm run lint ```
+  2. Run unit test ``` npm run utest ```
+  3. Run functional test ``` npm run ftest ```
     

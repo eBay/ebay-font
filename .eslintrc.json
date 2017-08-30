@@ -5,11 +5,7 @@
         "jquery": true
     },
     "globals": {
-        "FontFaceObserver": false,
-        "Modernizr": false,
-        "GLOBAL_CONTENT": false,
-        "$ssgST": false,
-        "Waypoint": false
+        "FontFaceObserver": false
     },
     "rules": {
         "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
