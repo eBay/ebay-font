@@ -1,7 +1,7 @@
 {
   "name": "ebay-font",
   "description": "A module to load ebay font",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Raja Ramu <rar@ebay.com>",
   "homepage": "https://github.corp.ebay.com/nodegems/ebay-font.git",
   "repository": {
