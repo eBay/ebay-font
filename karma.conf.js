@@ -6,7 +6,7 @@ module.exports = function (config) {
         lasso: {
             plugins: [
                 'lasso-less',
-                'lasso-marko',
+                'lasso-marko'
             ],
             minify: false,
             bundlingEnabled: false,

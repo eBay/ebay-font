@@ -1,3 +1,7 @@
 'use strict';
 
-exports.render = require('./renderer').render;
+var template = require('./template.marko');
+
+module.exports = function (input, out) {
+    template.render(input, out);
+};

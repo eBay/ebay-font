@@ -1,0 +1,6 @@
+node_modules/*
+.cache
+.test
+coverage
+**/template.marko.js
+**/fontfaceobserver.js
