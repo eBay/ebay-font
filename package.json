@@ -15,7 +15,7 @@
     "lint": "eslint *.js **/*.js",
     "utest": "NODE_ENV=test DEPLOY_ENV=test mocha test/unit-test/*.js  --timeout 30s",
     "ftest": "NODE_ENV=test DEPLOY_ENV=test ./node_modules/karma/bin/karma start karma.conf.js",
-    "coverage": "istanbul cover _mocha *-test/*.js",
+    "coverage": "istanbul cover _mocha test/*-test/*.js",
     "rep": "open coverage/lcov-report/index.html",
     "all": "npm run lint && npm test && npm run rep",
     "clean": "rm -rf .cache .test"
