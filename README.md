@@ -1,6 +1,6 @@
 # font-ebay
 
-It is used to load custom font(market sans) gracefully without impacting the site speed. it uses [FaceFaceSet](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet) to load font which is supported by most of the modern browsers. If FontFaceSet does not exist, it uses [fontfaceobserver](https://github.com/bramstein/fontfaceobserver/blob/master/fontfaceobserver.js) as a polyfill.
+It is used to load custom font(market sans) gracefully without impacting the site speed. it uses [FontFaceSet](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet) to load font which is supported by most of the modern browsers. If FontFaceSet does not exist, it uses [fontfaceobserver](https://github.com/bramstein/fontfaceobserver/blob/master/fontfaceobserver.js) as a polyfill.
 
 
 ## Installation
