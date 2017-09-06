@@ -32,10 +32,10 @@
     "jsdom": "^9.0.0",
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-lasso": "^3.0.1",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",
-    "karma-phantomjs-launcher": "^1.0.4",
     "lasso": "^2.0.0",
     "lasso-less": "^2.4.5",
     "lasso-marko": "^2.3.0",
@@ -43,7 +43,7 @@
     "marko": "^3.0.3",
     "mocha": "^3.5.0",
     "mocha-jsdom": "^1.1.0",
-    "phantomjs-prebuilt": "^2.1.15",
+    "puppeteer": "^0.10.2",
     "skin-ebay": "^2.10.1"
   },
   "peerDependencies": {
