@@ -1,5 +1,12 @@
+'use strict';
+
+var chromiumRevision = require('puppeteer/package.json').puppeteer.chromium_revision;
+var downloader = require('puppeteer/utils/ChromiumDownloader');
+var revisionInfo = downloader.revisionInfo(downloader.currentPlatform(), chromiumRevision);
+
+process.env.CHROME_BIN = revisionInfo.executablePath;
+
 module.exports = function(config) {
-    'use strict';
     config.set({
         basePath: '',
         frameworks: ['lasso', 'mocha', 'chai'],
@@ -19,7 +26,7 @@ module.exports = function(config) {
             'karma-mocha',
             'karma-lasso',
             'karma-mocha-reporter',
-            'karma-phantomjs-launcher'
+            'karma-chrome-launcher'
         ],
         files: [
             {
@@ -34,6 +41,6 @@ module.exports = function(config) {
         autoWatch: true,
         singleRun: true,
         logLevel: config.LOG_DEBUG,
-        browsers: ['PhantomJS']
+        browsers: ['ChromeHeadless']
     });
 };
