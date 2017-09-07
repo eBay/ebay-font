@@ -3,41 +3,29 @@
 
 var lassoLoader = require('lasso-loader').async;
 
-function updateLocalStorage() {
-    if (localStorage && !localStorage.getItem('ebay-font')) {
-        localStorage.setItem('ebay-font', 'font-marketsans');
-    }
-}
+var fontFaceSet = document.fonts;
+var FONT_CLASS_NAME = 'font-marketsans';
 
-function fontLoader(isFontFaceSupported) {
-    if (isFontFaceSupported) {
-        document.fonts.load('1em Market Sans').then(function() {
-            updateLocalStorage();
-        });
-    } else {
-        var marketsans = new FontFaceObserver('Market Sans');
-        if (marketsans && marketsans.load) {
-            marketsans.load().then(function() {
-                updateLocalStorage();
-            });
-        }
+function updateLocalStorage() {
+    if (localStorage) {
+        localStorage.setItem('ebay-font', FONT_CLASS_NAME);
     }
 }
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
-    var fontFaceSet = document.fonts;
-    if (fontFaceSet && fontFaceSet.load) {
-        fontLoader(true);
+    if (fontFaceSet) {
+        fontFaceSet.load('1em Market Sans').then(updateLocalStorage);
     } else {
         lassoLoader('font-async-observer', function() {
-            fontLoader();
+            var marketsans = new FontFaceObserver('Market Sans');
+            marketsans.load().then(updateLocalStorage);
         });
     }
 }
 
 function init() {
-    if (localStorage && !localStorage.getItem('ebay-font')) {
+    if (localStorage && localStorage.getItem('ebay-font') !== FONT_CLASS_NAME) {
         window.addEventListener('load', function() {
             if (requestAnimationFrame) {
                 requestAnimationFrame(loadFont);
