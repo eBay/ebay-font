@@ -15,10 +15,11 @@
     "lint": "eslint *.js **/*.js",
     "utest": "NODE_ENV=test DEPLOY_ENV=test mocha test/unit-test/*.js  --timeout 30s",
     "ftest": "NODE_ENV=test DEPLOY_ENV=test ./node_modules/karma/bin/karma start karma.conf.js",
-    "coverage": "istanbul cover _mocha test/*-test/*.js",
+    "ucov": "istanbul cover _mocha test/unit-test/*.js",
     "rep": "open coverage/lcov-report/index.html",
-    "all": "npm run lint && npm test && npm run rep",
-    "clean": "rm -rf .cache .test"
+    "clean": "rm -rf .cache .test coverage",
+    "coverage": "npm run ucov && npm run ftest",
+    "all": "npm run clean && npm run lint && npm run utest && npm run coverage"    
   },
   "dependencies": {
     "lasso-loader": "^3.0.2"
@@ -33,6 +34,7 @@
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
     "karma-lasso": "^3.0.1",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",

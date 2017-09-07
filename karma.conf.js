@@ -26,7 +26,8 @@ module.exports = function(config) {
             'karma-mocha',
             'karma-lasso',
             'karma-mocha-reporter',
-            'karma-chrome-launcher'
+            'karma-chrome-launcher',
+            "karma-coverage"
         ],
         files: [
             {
@@ -35,12 +36,21 @@ module.exports = function(config) {
                 nocache: false
             }
         ],
-        reporters: ['progress'],
+        preprocessors: {
+            'font/marketsans/*.js': ['coverage'],
+            'test/functional-test/*.js': ['coverage']
+        },
+        reporters: ['progress', 'coverage'],
         port: 9876,
         colors: true,
         autoWatch: true,
         singleRun: true,
         logLevel: config.LOG_DEBUG,
-        browsers: ['ChromeHeadless']
+        browsers: ['ChromeHeadless'],
+        coverageReporter: {
+            reporters: [
+              { type: 'html', dir: 'coverage/', subdir: '.functional-test', includeAllSources: true }
+            ]
+        }
     });
 };
