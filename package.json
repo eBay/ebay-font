@@ -9,7 +9,7 @@
     "url": "https://github.com/eBay/ebay-font"
   },
   "publishConfig": {
-    "registry": "http://npm.corp.ebay.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "lint": "eslint *.js **/*.js",
