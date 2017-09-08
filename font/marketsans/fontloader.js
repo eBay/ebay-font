@@ -1,4 +1,4 @@
-/* global FontFaceObserver */
+/* global FontFaceObserver, Promise */
 'use strict';
 
 var lassoLoader = require('lasso-loader').async;
@@ -14,12 +14,15 @@ function updateLocalStorage() {
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
-    if (fontFaceSet) {
-        fontFaceSet.load('1em Market Sans').then(updateLocalStorage);
+    if (fontFaceSet && fontFaceSet.load) {
+        fontFaceSet.load('1em Market Sans');
+        fontFaceSet.load('bold 1em Market Sans');
+        fontFaceSet.ready.then(updateLocalStorage);
     } else {
         lassoLoader('font-async-observer', function() {
-            var marketsans = new FontFaceObserver('Market Sans');
-            marketsans.load().then(updateLocalStorage);
+            var marketsansRegular = new FontFaceObserver('Market Sans');
+            var marketsansBold = new FontFaceObserver('Market Sans', { weight: 'bold' });
+            Promise.all([marketsansRegular.check(), marketsansBold.check()]).then(updateLocalStorage);
         });
     }
 }
