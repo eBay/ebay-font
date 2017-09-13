@@ -39,14 +39,12 @@
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.3",
     "lasso": "^2.0.0",
-    "lasso-less": "^2.4.5",
     "lasso-marko": "^2.3.0",
     "less": "^2.7.1",
     "marko": "^3.0.3",
     "mocha": "^3.5.0",
     "mocha-jsdom": "^1.1.0",
-    "puppeteer": "^0.10.2",
-    "skin-ebay": "^2.10.1"
+    "puppeteer": "^0.10.2"
   },
   "peerDependencies": {
     "lasso": "^2.0.0",
