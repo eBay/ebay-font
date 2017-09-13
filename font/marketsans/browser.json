@@ -1,6 +1,6 @@
 {
     "dependencies": [
-        "skin-ebay/marketsans",
+        "./marketsans.css",
         "require: lasso-loader",
         "require-run: ./fontloader.js"
     ],

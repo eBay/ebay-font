@@ -27,8 +27,14 @@ function loadFont() {
     }
 }
 
+function isFontLoaded() {
+    return (('fontDisplay' in document.documentElement.style) ||
+        (localStorage && localStorage.getItem('ebay-font') === FONT_CLASS_NAME));
+}
+
 function init() {
-    if (localStorage && localStorage.getItem('ebay-font') !== FONT_CLASS_NAME) {
+    // Initialize font loader only if it is not loaded previously
+    if (!isFontLoaded()) {
         window.addEventListener('load', function() {
             if (requestAnimationFrame) {
                 requestAnimationFrame(loadFont);

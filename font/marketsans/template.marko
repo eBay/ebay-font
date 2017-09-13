@@ -4,8 +4,9 @@
 }
 </style>
 <script>
-var fontClass = localStorage && localStorage.getItem('ebay-font');
-if (fontClass === 'font-marketsans') {
-    document.documentElement.classList.add(fontClass);
+var useCustomFont = ('fontDisplay' in document.documentElement.style) ||
+                (localStorage && localStorage.getItem('ebay-font'));
+if (useCustomFont) {
+    document.documentElement.classList.add('font-marketsans');
 }
 </script>

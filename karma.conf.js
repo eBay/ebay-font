@@ -12,7 +12,6 @@ module.exports = function(config) {
         frameworks: ['lasso', 'mocha', 'chai'],
         lasso: {
             plugins: [
-                'lasso-less',
                 'lasso-marko'
             ],
             minify: false,
