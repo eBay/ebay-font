@@ -1,68 +1,53 @@
 # ebay-font [![Build Status](https://travis-ci.org/eBay/ebay-font.svg?branch=master)](https://travis-ci.org/eBay/ebay-font) 
 
-It is used to load custom font(market sans) gracefully without impacting the site speed. it uses [FontFaceSet](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet) to load font which is supported by most of the modern browsers. If FontFaceSet does not exist, it uses [fontfaceobserver](https://github.com/bramstein/fontfaceobserver/blob/master/fontfaceobserver.js) as a polyfill.
+`ebay-font` is the module used at eBay to load custom web fonts. It uses a strategy to avoid both [FOUT](https://www.zachleat.com/web/webfont-glossary/#fout) and [FOIT](https://www.zachleat.com/web/webfont-glossary/#foit). This can be considered equivalent to the new CSS [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) descriptor [`font-display: optional`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display#values). Unfortunately, `font-display` is relatively new and hence its [adoption](http://caniuse.com/#search=font-display) among browsers is not widespread. So for now, this module leverages [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [`FontFaceSet`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet) API and the [Font Face Observer](https://github.com/bramstein/fontfaceobserver) utility (as a backup if `FontFaceSet` API is not present) to provide the same functionality as `font-display: optional`.
 
+`ebay-font` is paired along with eBay's custom font 'Market Sans'. But feel free to change it to any custom font URL of your choice.
 
-## Installation
+Please refer to the detailed blog post "[eBay’s Font Loading Strategy]()" for a full overview of how this module works. 
 
-1. Install the module into your project
+## Usage
+`ebay-font` can be used along with other eBay open source modules [Skin](https://ebay.github.io/skin/), [Marko](http://markojs.com/) & [Lasso](https://github.com/lasso-js/lasso), as well as in [standalone](#standalone) mode. If you are in the eBay workflow environment, please follow the below steps
+
+1. Install and save the module
 ```sh
 npm install ebay-font --save
 ```
-2. Add dependencies into page browser.json
+2. Add dependency in your page `browser.json`
 ```
 "ebay-font/browser.json"
 ```
-
-## Usage
-
-font-ebay exposes a tag(`<ebay-font>`) to embed into <head> of the page. this tag injects tiny js(230bytes gzipped) into head to check if font is already loaded by checking a flag(ebay-font) on localstorage
-
-## Example
-
+3. The module exposes a tag `<ebay-font>` to embed in the `<head>` tag of page HTML
 ```html
+<html>
 <head>
-...
-<font-ebay>
+    <font-ebay>
+    ... 
 </head>
-<body>
 ...
-...
+</html>
 ```
 
-## Font loading strategy
-We explored many options to load fonts including the one captured by [Zach Leatherman](https://www.zachleat.com/web/comprehensive-webfonts/). we followed following principle to choose the best strategy,
+### Standalone
+1. Copy paste this CSS and JavaScript tag [snippet](https://github.com/eBay/ebay-font/blob/master/font/marketsans/template.marko) in the `<head>` tag of your page
 
-  1. No FOUT/FOIT to users
-  2. No render blocking
-  3. Cache the font to avoid extra http call(make use of browser cache for repeated users)
-  4. Zero site speed impact while loading font
-  5. Progressive enhancement (use as native as possible)
-  6. Let CSS format rule to decide what kind of font should be loaded
-  ```
-    @font-face {
-      font-family: 'MyWebFont';
-      src: url('webfont.eot'); /* IE9 Compat Modes */
-      src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-           url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
-           url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
-           url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-           url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
-    }
+1. Include this JavaScript file [TODO]() in the footer
+```JavaScript
+<script async src="TODO"></script>
 ```
 
-## Adopted approach
-  1. Page will load with default font which should be as much close as possible to custom font. If [skin-ebay](https://ebay.github.io/skin/) is used in the page, default font-family would be set to <body> as `font-family:'Helvetica Neue', Helvetica, Arial, Roboto, sans-serif`; and use ebay-font in the application which will take care of the rest.
-  2. ebay-font inject tiny script and css into <head> of the page which will check if font is already exist in the page. if so, it adds a css class into <html>. Once this css is added, custom font is starting to be used. 
- 3. Along with #2, it inject script at bottom of the page by [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to load font asynchronously using [lasso-loader](https://github.com/lasso-js/lasso-loader)
-  
-## Cons
-Custom font will not be shown to first time users. 
+## Browser support
+* Chrome (desktop & Android)
+* Firefox
+* Opera
+* Safari (desktop & iOS)
+* IE8+
+* Android WebKit
 
-## How to test
- ### First timer user,
-   1. will see `font-family: "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif`
-   2. look at chrome dev tool > Application > localstorage 'ebay-font', 'font-marketsans'
- ### Repeated user,
-   1. will see `font-family: "Market Sans", "Helvetica Neue", Helvetica,Arial,Roboto,sans-serif`
-   2. page will be loaded with market sans font
+## Issues
+Have a bug or a feature request? [Please open a new issue](https://github.com/eBay/ebay-font/issues)
+
+## License 
+Copyright (c) 2017 eBay Inc.
+
+Released under the [MIT](http://www.opensource.org/licenses/MIT) License
