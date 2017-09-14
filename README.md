@@ -7,8 +7,27 @@
 Please refer to the detailed blog post "[eBay’s Font Loading Strategy]()" for a full overview of how this module works. 
 
 ## Usage
+`ebay-font` can be used along with other eBay open source modules [Skin](https://ebay.github.io/skin/), [Marko](http://markojs.com/) & [Lasso](https://github.com/lasso-js/lasso), as well as in [standalone](#standalone) mode. If you are in the eBay workflow environment, please follow the below steps
 
-### 
+1. Install and save the module
+```sh
+npm install ebay-font --save
+```
+2. Add dependency in your page `browser.json`
+```
+"ebay-font/browser.json"
+```
+3. The module exposes a tag `<ebay-font>` to embed in the `<head>` tag of page HTML
+```html
+<html>
+<head>
+    <font-ebay>
+    ... 
+</head>
+...
+</html>
+```
+
 ### Standalone
 1. Copy paste this CSS and JavaScript tag [snippet](https://github.com/eBay/ebay-font/blob/master/font/marketsans/template.marko) in the `<head>` tag of your page
 
