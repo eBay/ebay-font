@@ -5,7 +5,6 @@ var lassoLoader = require('lasso-loader').async;
 
 var fontFaceSet = document.fonts;
 var FONT_CLASS_NAME = 'font-marketsans';
-var isSafari10 = null;
 
 function updateLocalStorage() {
     if (localStorage) {
@@ -13,13 +12,12 @@ function updateLocalStorage() {
     }
 }
 function isSafari10Bug() {
-    if (isSafari10 === null) {
-        if (/Apple/.test(window.navigator.vendor)) {
-            var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-            isSafari10 = !!match && parseInt(match[1], 10) < 603;
-        } else {
-            isSafari10 = false;
-        }
+    var isSafari10 = null;
+    if (/Apple/.test(window.navigator.vendor)) {
+        var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
+        isSafari10 = !!match && parseInt(match[1], 10) < 603;
+    } else {
+        isSafari10 = false;
     }
     return isSafari10;
 }
