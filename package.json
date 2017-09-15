@@ -19,7 +19,8 @@
     "rep": "open coverage/lcov-report/index.html",
     "clean": "rm -rf .cache .test coverage",
     "coverage": "npm run ucov && npm run ftest",
-    "all": "npm run clean && npm run lint && npm run utest && npm run coverage"    
+    "test": "npm run lint && npm run utest && npm run ftest",
+    "all": "npm run clean && npm run test && npm run coverage"    
   },
   "dependencies": {
     "lasso-loader": "^3.0.2"
