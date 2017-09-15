@@ -1,12 +1,11 @@
 {
     "dependencies": [
-        "./marketsans.css",
         "require: lasso-loader",
         "require-run: ./fontloader.js"
     ],
     "async": {
         "font-async-observer":[
-            "./fontfaceobserver.js"
+            "./../vendor/fontfaceobserver.js"
         ]
     }
 }
