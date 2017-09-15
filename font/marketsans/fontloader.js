@@ -11,20 +11,35 @@ function updateLocalStorage() {
         localStorage.setItem('ebay-font', FONT_CLASS_NAME);
     }
 }
-function isSafari10Bug() {
-    var isSafari10 = null;
+/**
+   * Returns true if the browser has the Safari 10 bugs. The
+   * native font load API in Safari 10 has two bugs that cause
+   * the document.fonts.load and FontFace.prototype.load methods
+   * to return promises that don't reliably get fired.
+   *
+   * The bugs are described in more detail here:
+   *  - https://bugs.webkit.org/show_bug.cgi?id=165037
+   *  - https://bugs.webkit.org/show_bug.cgi?id=164902
+   *
+   * If the browser is made by Apple, and has native font
+   * loading support, it is potentially affected. But the API
+   * was fixed around AppleWebKit version 603, so any newer
+   * versions that that does not contain the bug.
+   *
+   * @return {boolean}
+*/
+function isCompatible() {
+    var isCompatible = false;
     if (/Apple/.test(window.navigator.vendor)) {
         var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-        isSafari10 = !!match && parseInt(match[1], 10) < 603;
-    } else {
-        isSafari10 = false;
+        isCompatible = !!match && parseInt(match[1], 10) < 603;
     }
-    return isSafari10;
+    return isCompatible;
 }
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
-    if (fontFaceSet && fontFaceSet.load && !isSafari10Bug()) {
+    if (fontFaceSet && fontFaceSet.load && !isCompatible()) {
         fontFaceSet.load('1em Market Sans');
         fontFaceSet.load('bold 1em Market Sans');
         fontFaceSet.ready.then(updateLocalStorage);
