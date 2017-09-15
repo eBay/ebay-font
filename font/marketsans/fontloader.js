@@ -14,15 +14,15 @@ function updateLocalStorage() {
 }
 function isSafari10Bug() {
     if (isSafari10 === null) {
-      if (/Apple/.test(window.navigator.vendor)) {
-        var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-        isSafari10 = !!match && parseInt(match[1], 10) < 603;
-      } else {
-        isSafari10 = false;
-      }
+        if (/Apple/.test(window.navigator.vendor)) {
+            var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
+            isSafari10 = !!match && parseInt(match[1], 10) < 603;
+        } else {
+            isSafari10 = false;
+        }
     }
     return isSafari10;
-};
+}
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
