@@ -12,7 +12,8 @@ function updateLocalStorage() {
     }
 }
 /**
-   * Returns true if the browser has the Safari 10 bugs. The
+   * Check the FontFaceSet API
+   * Returns false if the browser has the Safari 10 bugs. The
    * native font load API in Safari 10 has two bugs that cause
    * the document.fonts.load and FontFace.prototype.load methods
    * to return promises that don't reliably get fired.
@@ -29,17 +30,17 @@ function updateLocalStorage() {
    * @return {boolean}
 */
 function isCompatible() {
-    var compatible = false;
-    if (/Apple/.test(window.navigator.vendor)) {
+    var compatible = fontFaceSet && fontFaceSet.load;
+    if (compatible && /Apple/.test(window.navigator.vendor)) {
         var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-        compatible = !!match && parseInt(match[1], 10) < 603;
+        compatible = !(match && parseInt(match[1], 10) < 603);
     }
     return compatible;
 }
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
-    if (fontFaceSet && fontFaceSet.load && !isCompatible()) {
+    if (isCompatible()) {
         fontFaceSet.load('1em Market Sans');
         fontFaceSet.load('bold 1em Market Sans');
         fontFaceSet.ready.then(updateLocalStorage);
