@@ -12,7 +12,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "lint": "eslint *.js **/*.js",
+    "lint": "eslint ./",
+    "build": "node scripts/build.js",
     "utest": "NODE_ENV=test DEPLOY_ENV=test mocha test/unit-test/*.js  --timeout 30s",
     "ftest": "NODE_ENV=test DEPLOY_ENV=test ./node_modules/karma/bin/karma start karma.conf.js",
     "ucov": "istanbul cover _mocha test/unit-test/*.js",
