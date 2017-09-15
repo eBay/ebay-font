@@ -29,12 +29,12 @@ function updateLocalStorage() {
    * @return {boolean}
 */
 function isCompatible() {
-    var isCompatible = false;
+    var compatible = false;
     if (/Apple/.test(window.navigator.vendor)) {
         var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-        isCompatible = !!match && parseInt(match[1], 10) < 603;
+        compatible = !!match && parseInt(match[1], 10) < 603;
     }
-    return isCompatible;
+    return compatible;
 }
 
 function loadFont() {
