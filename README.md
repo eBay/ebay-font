@@ -47,6 +47,13 @@ npm install ebay-font --save
 ## Issues
 Have a bug or a feature request? [Please open a new issue](https://github.com/eBay/ebay-font/issues)
 
+## Maintainers
+* [Raja Ramu](https://github.com/RajaRamu)
+* [Senthil Padmanabhan](https://senthilp.com)
+
+## Contribute
+Pull Requests welcome. Please submit Github issues for any feature enhancements, bugs or documentation problems.
+
 ## License 
 Copyright (c) 2017 eBay Inc.
 
