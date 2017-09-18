@@ -11,9 +11,10 @@ function updateLocalStorage() {
         localStorage.setItem('ebay-font', FONT_CLASS_NAME);
     }
 }
+
 /**
-   * Check the FontFaceSet API
-   * Returns false if the browser has the Safari 10 bugs. The
+   * Check if FontFaceSet API is supported, along with some browser quirks
+   * Mainly return false if the browser has the Safari 10 bugs. The
    * native font load API in Safari 10 has two bugs that cause
    * the document.fonts.load and FontFace.prototype.load methods
    * to return promises that don't reliably get fired.
@@ -29,7 +30,7 @@ function updateLocalStorage() {
    *
    * @return {boolean}
 */
-function isCompatible() {
+function isFontFaceSetCompatible() {
     var compatible = fontFaceSet && fontFaceSet.load;
     if (compatible && /Apple/.test(window.navigator.vendor)) {
         var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
@@ -40,7 +41,7 @@ function isCompatible() {
 
 function loadFont() {
     // check for fontfaceset else load polyfill before invoking fontloader
-    if (isCompatible()) {
+    if (isFontFaceSetCompatible()) {
         fontFaceSet.load('1em Market Sans');
         fontFaceSet.load('bold 1em Market Sans');
         fontFaceSet.ready.then(updateLocalStorage);

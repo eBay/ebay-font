@@ -31,9 +31,9 @@ npm install ebay-font --save
 ### Standalone
 1. Copy paste this CSS and JavaScript tag [snippet](https://github.com/eBay/ebay-font/blob/master/font/marketsans/template.marko) in the `<head>` tag of your page
 
-1. Include this JavaScript file [TODO]() in the footer
+1. Include this generated JavaScript file [fontloader.js](https://github.com/eBay/ebay-font/blob/master/dist/fontloader.js) in the footer
 ```JavaScript
-<script async src="TODO"></script>
+<script async src="fontloader.js"></script>
 ```
 
 ## Browser support
