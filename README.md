@@ -21,7 +21,7 @@ npm install ebay-font --save
 ```html
 <html>
 <head>
-    <font-ebay>
+    <ebay-font>
     ... 
 </head>
 ...
@@ -32,7 +32,7 @@ npm install ebay-font --save
 1. Copy paste this CSS and JavaScript tag [snippet](https://github.com/eBay/ebay-font/blob/master/font/marketsans/template.marko) in the `<head>` tag of your page
 
 1. Include this generated JavaScript file [fontloader.js](https://github.com/eBay/ebay-font/blob/master/dist/fontloader.js) in the footer
-```JavaScript
+```html
 <script async src="fontloader.js"></script>
 ```
 
