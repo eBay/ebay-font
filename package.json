@@ -21,7 +21,7 @@
     "clean": "rm -rf .cache .test coverage",
     "coverage": "npm run ucov && npm run ftest",
     "test": "npm run lint && npm run utest && npm run ftest",
-    "all": "npm run clean && npm run test && npm run coverage"    
+    "all": "npm run clean && npm run test && npm run coverage"
   },
   "dependencies": {
     "lasso-loader": "^3.0.2"
@@ -46,7 +46,8 @@
     "marko": "^3.0.3",
     "mocha": "^3.5.0",
     "mocha-jsdom": "^1.1.0",
-    "puppeteer": "^0.10.2"
+    "puppeteer": "^0.10.2",
+    "uglify-js": "^3.1.1"
   },
   "peerDependencies": {
     "lasso": "^2.0.0",
