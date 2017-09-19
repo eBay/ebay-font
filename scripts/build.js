@@ -2,11 +2,12 @@
 
 const { join } = require("path");
 const mkdirp = require('mkdirp');
+const uglifyJS = require("uglify-js");
 const { readFileSync, writeFileSync } = require("fs");
 
 const rootPath = join(__dirname, '..');
 const destPath = join(rootPath, 'dist');
-const fontloaderFile = join(destPath, 'fontloader.js');
+const fontloaderStandaloneFile = join(destPath, 'fontloader.standalone.js');
 
 function getFileContent(filePath) {
     try {
@@ -41,8 +42,18 @@ function getFontLoaderLogic() {
         process.exit(1);
     }
 
-    // Replace with a simple identity function
-    return fontLoaderLogic.replace(pattern, `function(_, cb){cb();}`);
+    // Replace pattern with a simple identity function
+    const fontLoaderUpdatedLogic = fontLoaderLogic.replace(pattern, `function(_, cb){cb();}`);
+
+    // Minify the content
+    const { code, error } = uglifyJS.minify(fontLoaderUpdatedLogic);
+
+    if (error) {
+        console.log(`Uglify task failed`);
+        process.exit(1);
+    }
+
+    return code;
 }
 
 function generateFile() {
@@ -61,7 +72,7 @@ function generateFile() {
         const fontLoaderIIFE = wrapInIIFE(fontLoaderLogic);
         fontLoaderContent.push(fontLoaderIIFE);
 
-        writeFileSync(fontloaderFile, fontLoaderContent.join('\n'), 'utf8');
+        writeFileSync(fontloaderStandaloneFile, fontLoaderContent.join('\n'), 'utf8');
     });
 }
 

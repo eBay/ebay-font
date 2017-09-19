@@ -10,86 +10,8 @@ A.prototype.load=function(a,b){var c=this,k=a||"BESbswy",q=0,D=b||3E3,H=(new Dat
 f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=h)(b=f!=g&&f!=h&&g!=h)||(null===B&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=B&&(f==v&&g==v&&h==v||f==w&&g==w&&h==w||f==x&&g==x&&h==x)),b=!b;b&&(d.parentNode&&d.parentNode.removeChild(d),clearTimeout(q),a(c))}function I(){if((new Date).getTime()-H>=D)d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===a||void 0===a)f=e.a.offsetWidth,
 g=n.a.offsetWidth,h=p.a.offsetWidth,u();q=setTimeout(I,50)}}var e=new r(k),n=new r(k),p=new r(k),f=-1,g=-1,h=-1,v=-1,w=-1,x=-1,d=document.createElement("div");d.dir="ltr";t(e,L(c,"sans-serif"));t(n,L(c,"serif"));t(p,L(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);v=e.a.offsetWidth;w=n.a.offsetWidth;x=p.a.offsetWidth;I();z(e,function(a){f=a;u()});t(e,L(c,'"'+c.family+'",sans-serif'));z(n,function(a){g=a;u()});t(n,L(c,'"'+c.family+'",serif'));
 z(p,function(a){h=a;u()});t(p,L(c,'"'+c.family+'",monospace'))})})};"object"===typeof module?module.exports=A:(window.FontFaceObserver=A,window.FontFaceObserver.prototype.load=A.prototype.load);}());
-
-
+ 
         ;(function() {
-            /* global FontFaceObserver, Promise */
-'use strict';
-
-var lassoLoader = function(_, cb){cb();};
-
-var fontFaceSet = document.fonts;
-var FONT_CLASS_NAME = 'font-marketsans';
-
-function updateLocalStorage() {
-    if (localStorage) {
-        localStorage.setItem('ebay-font', FONT_CLASS_NAME);
-    }
-}
-
-/**
-   * Check if FontFaceSet API is supported, along with some browser quirks
-   * Mainly return false if the browser has the Safari 10 bugs. The
-   * native font load API in Safari 10 has two bugs that cause
-   * the document.fonts.load and FontFace.prototype.load methods
-   * to return promises that don't reliably get fired.
-   *
-   * The bugs are described in more detail here:
-   *  - https://bugs.webkit.org/show_bug.cgi?id=165037
-   *  - https://bugs.webkit.org/show_bug.cgi?id=164902
-   *
-   * If the browser is made by Apple, and has native font
-   * loading support, it is potentially affected. But the API
-   * was fixed around AppleWebKit version 603, so any newer
-   * versions that that does not contain the bug.
-   *
-   * @return {boolean}
-*/
-function isFontFaceSetCompatible() {
-    var compatible = fontFaceSet && fontFaceSet.load;
-    if (compatible && /Apple/.test(window.navigator.vendor)) {
-        var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
-        compatible = !(match && parseInt(match[1], 10) < 603);
-    }
-    return compatible;
-}
-
-function loadFont() {
-    // check for fontfaceset else load polyfill before invoking fontloader
-    if (isFontFaceSetCompatible()) {
-        fontFaceSet.load('1em Market Sans');
-        fontFaceSet.load('bold 1em Market Sans');
-        fontFaceSet.ready.then(updateLocalStorage);
-    } else {
-        lassoLoader('font-async-observer', function(err) {
-            if (err) {
-                return;
-            }
-            var marketsansRegular = new FontFaceObserver('Market Sans');
-            var marketsansBold = new FontFaceObserver('Market Sans', { weight: 'bold' });
-            Promise.all([marketsansRegular.load(), marketsansBold.load()]).then(updateLocalStorage);
-        });
-    }
-}
-
-function isFontLoaded() {
-    return (('fontDisplay' in document.documentElement.style) ||
-        (localStorage && localStorage.getItem('ebay-font') === FONT_CLASS_NAME));
-}
-
-function init() {
-    // Initialize font loader only if it is not loaded previously
-    if (!isFontLoaded()) {
-        window.addEventListener('load', function() {
-            if (requestAnimationFrame) {
-                requestAnimationFrame(loadFont);
-            } else {
-                loadFont();
-            }
-        });
-    }
-}
-init();
-
+            "use strict";function updateLocalStorage(){localStorage&&localStorage.setItem("ebay-font",FONT_CLASS_NAME)}function isFontFaceSetCompatible(){var e=fontFaceSet&&fontFaceSet.load;if(e&&/Apple/.test(window.navigator.vendor)){var t=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);e=!(t&&parseInt(t[1],10)<603)}return e}function loadFont(){isFontFaceSetCompatible()?(fontFaceSet.load("1em Market Sans"),fontFaceSet.load("bold 1em Market Sans"),fontFaceSet.ready.then(updateLocalStorage)):lassoLoader("font-async-observer",function(e){if(!e){var t=new FontFaceObserver("Market Sans"),o=new FontFaceObserver("Market Sans",{weight:"bold"});Promise.all([t.load(),o.load()]).then(updateLocalStorage)}})}function isFontLoaded(){return"fontDisplay"in document.documentElement.style||localStorage&&localStorage.getItem("ebay-font")===FONT_CLASS_NAME}function init(){isFontLoaded()||window.addEventListener("load",function(){requestAnimationFrame?requestAnimationFrame(loadFont):loadFont()})}var lassoLoader=function(e,t){t()},fontFaceSet=document.fonts,FONT_CLASS_NAME="font-marketsans";init();
         }());
     
