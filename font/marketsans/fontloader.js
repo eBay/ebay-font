@@ -7,8 +7,12 @@ var fontFaceSet = document.fonts;
 var FONT_CLASS_NAME = 'font-marketsans';
 
 function updateLocalStorage() {
-    if (localStorage) {
+    try {
         localStorage.setItem('ebay-font', FONT_CLASS_NAME);
+    } catch (ex) {
+        // Either localStorage not present or quota has exceeded
+        // Another reason Safari private mode
+        // https://stackoverflow.com/questions/14555347/html5-localstorage-error-with-safari-quota-exceeded-err-dom-exception-22-an
     }
 }
 
