@@ -4,7 +4,7 @@
 
 `ebay-font` is paired along with eBay's custom font 'Market Sans'. But feel free to change it to any custom font URL of your choice.
 
-Please refer to the detailed blog post "[eBay’s Font Loading Strategy]()" for a full overview of how this module works. 
+Please refer to the detailed blog post "[eBay’s Font Loading Strategy](http://www.ebaytechblog.com/2017/09/21/ebays-font-loading-strategy/)" for a full overview of how this module works. 
 
 ## Usage
 `ebay-font` can be used along with other eBay open source modules [Skin](https://ebay.github.io/skin/), [Marko](http://markojs.com/) & [Lasso](https://github.com/lasso-js/lasso), as well as in [standalone](#standalone) mode. If you are in the eBay workflow environment, please follow the below steps
