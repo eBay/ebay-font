@@ -1,6 +1,4 @@
 'use strict';
-
-require('marko/node-require').install();
 var chai = require('chai');
 var expect = chai.expect;
 var spies = require('chai-spies');
