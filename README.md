@@ -47,8 +47,8 @@ npm install ebay-font --save
 ## Issues
 Have a bug or a feature request? [Please open a new issue](https://github.com/eBay/ebay-font/issues)
 
-## Open issues
-All the font formats are getting downloaded if font-display exist in the font-face. https://bugs.chromium.org/p/chromium/issues/detail?id=770978
+## Open browser issues
+* **Chrome —** Very randomly on a new session, all font formats are getting downloaded if `font-display` is present in the `font-face`. Filed a [bug](https://bugs.chromium.org/p/chromium/issues/detail?id=770978) to track it.
 
 ## Maintainers
 * [Raja Ramu](https://github.com/RajaRamu)
