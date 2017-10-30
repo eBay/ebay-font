@@ -25,6 +25,7 @@
     "all": "npm run clean && npm run test && npm run coverage"
   },
   "dependencies": {
+    "@ebay/skin": ">=3.1.0",
     "lasso-loader": "^3.0.2"
   },
   "devDependencies": {
