@@ -26,7 +26,7 @@ module.exports = function(config) {
             'karma-lasso',
             'karma-mocha-reporter',
             'karma-chrome-launcher',
-            "karma-coverage"
+            'karma-coverage'
         ],
         files: [
             {
