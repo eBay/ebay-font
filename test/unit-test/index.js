@@ -8,7 +8,7 @@ describe('ebay-font ', function() {
     it('should render template with <style> & <script>', function(done) {
         var out = function(err, output) {
             if (err) {
-                return done(err);
+                done(err);
             }
             expect(output).not.to.be.empty; // eslint-disable-line no-unused-expressions
             done();
