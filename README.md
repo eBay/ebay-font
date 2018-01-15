@@ -21,11 +21,18 @@ npm install ebay-font --save
 ```html
 <html>
 <head>
-    <ebay-font>
+    <ebay-font/>
     ... 
 </head>
 ...
 </html>
+```
+
+* Note: If your website uses Content Security Policy (CSP), you can pass the CSP nonce value to `<ebay-font>` tag
+```html
+...
+    <ebay-font nonce="4AEemGb0xJptoIGFP3Nd"/>
+...
 ```
 
 ### Standalone
