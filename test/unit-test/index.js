@@ -10,10 +10,28 @@ describe('ebay-font ', function() {
             if (err) {
                 done(err);
             }
-            expect(output).not.to.be.empty; // eslint-disable-line no-unused-expressions
+            var htmlStr = output.toString();
+            expect(htmlStr).to.contain('<style>')
+                .and.to.contain('<script>');
+
             done();
         };
         out.global = {};
         renderer({}, out);
+    });
+
+    it('should render attribute nonce', function(done) {
+        var out = function(err, output) {
+            if (err) {
+                done(err);
+            }
+            var htmlStr = output.toString();
+            expect(htmlStr).to.contain('<style nonce="test-123">')
+                .and.to.contain('<script nonce="test-123">');
+
+            done();
+        };
+        out.global = {};
+        renderer({ nonce: 'test-123' }, out);
     });
 });
