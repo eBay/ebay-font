@@ -1,7 +1,8 @@
 {
     "tags": {
         "ebay-font": {
-            "renderer": "./font/marketsans"
+            "renderer": "./font/marketsans",
+            "@nonce": "string"
         }
     }
 }
