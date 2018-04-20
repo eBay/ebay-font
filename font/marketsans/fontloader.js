@@ -1,10 +1,18 @@
 /* global FontFaceObserver, Promise */
 'use strict';
 
-var lassoLoader = require('lasso-loader').async;
-
 var fontFaceSet = document.fonts;
 var FONT_CLASS_NAME = 'font-marketsans';
+var FONT_FACE_OBSERVER_LIB = 'https://ir.ebaystatic.com/cr/v/c1/vendor/fontfaceobserver.js';
+
+function lazyLoad(url, callback) {
+    var scriptElem = document.createElement('script');
+    scriptElem.type = 'application/javascript';
+    scriptElem.async = true;
+    scriptElem.onload = callback;
+    scriptElem.src = url;
+    document.documentElement.firstChild.appendChild(scriptElem);
+}
 
 function updateLocalStorage() {
     try {
@@ -50,10 +58,7 @@ function loadFont() {
         fontFaceSet.load('bold 1em Market Sans');
         fontFaceSet.ready.then(updateLocalStorage);
     } else {
-        lassoLoader('font-async-observer', function(err) {
-            if (err) {
-                return;
-            }
+        lazyLoad(FONT_FACE_OBSERVER_LIB, function() {
             var marketsansRegular = new FontFaceObserver('Market Sans');
             var marketsansBold = new FontFaceObserver('Market Sans', { weight: 'bold' });
             Promise.all([marketsansRegular.load(), marketsansBold.load()]).then(updateLocalStorage);
