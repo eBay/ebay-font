@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const { join } = require("path");
+const { join } = require('path');
 const mkdirp = require('mkdirp');
-const uglifyJS = require("uglify-js");
-const { readFileSync, writeFileSync } = require("fs");
+const uglifyJS = require('uglify-js');
+const { readFileSync, writeFileSync } = require('fs');
 
 const rootPath = join(__dirname, '..');
 const destPath = join(rootPath, 'dist');
@@ -32,21 +32,11 @@ function wrapInIIFE(body) {
     `;
 }
 
-function getFontLoaderLogic() {
+function getFontLoaderCode() {
     const fontLoaderLogic = getFileContent(join(rootPath, 'font/marketsans/fontloader.js'));
-    const pattern = `require('lasso-loader').async`;
-
-    if (!fontLoaderLogic.includes(pattern)) {
-        // Exit is the pattern is not matching
-        console.log(`Pattern (${pattern}) matching in source fontloader.js failed`);
-        process.exit(1);
-    }
-
-    // Replace pattern with a simple identity function
-    const fontLoaderUpdatedLogic = fontLoaderLogic.replace(pattern, `function(_, cb){cb();}`);
 
     // Minify the content
-    const { code, error } = uglifyJS.minify(fontLoaderUpdatedLogic);
+    const { code, error } = uglifyJS.minify(fontLoaderLogic);
 
     if (error) {
         console.log(`Uglify task failed`);
@@ -62,17 +52,12 @@ function generateFile() {
             console.log(err);
             process.exit(err.code);
         }
-        const fontLoaderContent = [];
 
-        // Push the Font Face Observer
-        fontLoaderContent.push(getFileContent(join(rootPath, 'font/vendor/fontfaceobserver.js')));
+        // Wrap fontloader code in IIFE
+        const fontLoaderCode = getFontLoaderCode();
+        const fontLoaderIIFE = wrapInIIFE(fontLoaderCode);
 
-        // Push fontloader logic wrapped in IIFE
-        const fontLoaderLogic = getFontLoaderLogic();
-        const fontLoaderIIFE = wrapInIIFE(fontLoaderLogic);
-        fontLoaderContent.push(fontLoaderIIFE);
-
-        writeFileSync(fontloaderStandaloneFile, fontLoaderContent.join('\n'), 'utf8');
+        writeFileSync(fontloaderStandaloneFile, fontLoaderIIFE, 'utf8');
     });
 }
 

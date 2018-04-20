@@ -1,12 +1,6 @@
 {
     "dependencies": [
-        "require: lasso-loader",
         "require-run: ./fontloader.js",
         "@ebay/skin/marketsans"
-    ],
-    "async": {
-        "font-async-observer":[
-            "./../vendor/fontfaceobserver.js"
-        ]
-    }
+    ]
 }
