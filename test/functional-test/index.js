@@ -33,7 +33,7 @@ describe('ebay-font', function() {
     it('Check for font-marketsans > body ', function(done) {
         var styles = document.getElementsByTagName('style');
         expect(styles[0].innerHTML).to.include('\"Market Sans\"');
-        expect(styles[0].innerHTML).to.include('font-marketsans > body ');
+        expect(styles[0].innerHTML).to.include('font-marketsans body ');
         done();
     });
     it('Check for localstorage on page load ', function(done) {
