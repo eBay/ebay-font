@@ -11,7 +11,9 @@ function lazyLoad(url, callback) {
     scriptElem.async = true;
     scriptElem.onload = callback;
     scriptElem.src = url;
-    document.documentElement.firstChild.appendChild(scriptElem);
+
+    var firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(scriptElem, firstScript);
 }
 
 function updateLocalStorage() {
