@@ -1,7 +1,7 @@
 language: node_js
 # Work-around for https://github.com/travis-ci/travis-ci/issues/8836#issuecomment-356362524.
 sudo: required
-
+dist: xenial
 addons:
   apt:
     packages:
@@ -27,3 +27,4 @@ before_install:
   # Launch XVFB
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
