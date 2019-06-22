@@ -17,6 +17,9 @@ cache:
   directories:
     - ~/.npm
 
+services:
+  - xvfb
+
 # allow headful tests
 before_install:
   # Enable user namespace cloning
