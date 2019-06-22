@@ -48,7 +48,7 @@ module.exports = function(config) {
         browsers: ['ChromeHeadless'],
         coverageReporter: {
             reporters: [
-              { type: 'html', dir: 'coverage/', subdir: '.functional-test', includeAllSources: true }
+                { type: 'html', dir: 'coverage/', subdir: '.functional-test', includeAllSources: true }
             ]
         }
     });
