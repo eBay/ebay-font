@@ -1,10 +1,6 @@
 'use strict';
 
-var chromiumRevision = require('puppeteer/package.json').puppeteer.chromium_revision;
-var downloader = require('puppeteer/utils/ChromiumDownloader');
-var revisionInfo = downloader.revisionInfo(downloader.currentPlatform(), chromiumRevision);
-
-process.env.CHROME_BIN = revisionInfo.executablePath;
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function(config) {
     config.set({
