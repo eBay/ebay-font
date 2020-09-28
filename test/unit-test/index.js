@@ -26,8 +26,8 @@ describe('ebay-font ', function() {
                 done(err);
             }
             var htmlStr = output.toString();
-            expect(htmlStr).to.contain('<style nonce="test-123">')
-                .and.to.contain('<script nonce="test-123">');
+            expect(htmlStr).to.contain('<style nonce=test-123>')
+                .and.to.contain('<script nonce=test-123>');
 
             done();
         };
