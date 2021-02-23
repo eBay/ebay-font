@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-var */
 'use strict';
 
 require('marko/node-require').install();

@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-var */
 /* global FontFaceObserver, Promise */
 'use strict';
 

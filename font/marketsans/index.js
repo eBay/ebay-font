@@ -1,4 +1,3 @@
-/* eslint-disable no-var */
 'use strict';
 
 var template = require('./template.marko');

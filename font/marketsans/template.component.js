@@ -1,5 +1,5 @@
 module.exports = {
-    onInput() {
+    onInput: function() {
         return null;
     }
 };
