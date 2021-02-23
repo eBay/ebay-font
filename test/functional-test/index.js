@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-var */
 'use strict';
 var chai = require('chai');
 var expect = chai.expect;
