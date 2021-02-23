@@ -2,7 +2,7 @@
 
 require('marko/node-require').install();
 var expect = require('chai').expect;
-var renderer = require('../../font/marketsans/');
+var template = require('../../font/marketsans/index.marko').default;
 
 describe('ebay-font ', function() {
     it('should render template with <style> & <script>', function(done) {
@@ -17,7 +17,7 @@ describe('ebay-font ', function() {
             done();
         };
         out.global = {};
-        renderer({}, out);
+        template.render({}, out);
     });
 
     it('should render attribute nonce', function(done) {
@@ -32,6 +32,6 @@ describe('ebay-font ', function() {
             done();
         };
         out.global = {};
-        renderer({ nonce: 'test-123' }, out);
+        template.render({ nonce: 'test-123' }, out);
     });
 });

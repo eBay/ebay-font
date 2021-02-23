@@ -3,7 +3,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var spies = require('chai-spies');
 var jsdom = require('mocha-jsdom');
-var renderer = require('../../font/marketsans/');
+var template = require('../../font/marketsans/').default;
 chai.use(spies);
 
 describe('ebay-font', function() {
@@ -25,7 +25,7 @@ describe('ebay-font', function() {
             }
             appendHtml(document.body, output);
         };
-        renderer({}, out);
+        template.render({}, out);
     });
     after(function() {
         this.timeout(2000);

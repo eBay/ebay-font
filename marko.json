@@ -1,7 +1,7 @@
 {
     "tags": {
         "ebay-font": {
-            "template": "./font/marketsans/template.marko",
+            "template": "./font/marketsans/index.marko",
             "@nonce": "string"
         }
     }
